@@ -21,12 +21,12 @@ const SortingAlgorithmContext = createContext<
   SortingAlgorithmContextType | undefined
 >(undefined);
 
-export const SortingAlgortihmProvider = ({
+export const SortingAlgorithmProvider = ({
   children,
 }: {
   children: React.ReactNode;
 }) => {
-  const [arrayToSort, setArrayToSort] = useState<number[]>([]);
+  const [arrayToSort, setArrayToSort] = useState<number[]>([100, 300, 250, 75]);
   const [selectedAlgorithm, setSelectedAlgorithm] =
     useState<SortingAlgorithmType>("bubble");
   const [isSorting, setIsSorting] = useState<boolean>(false);
