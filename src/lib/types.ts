@@ -1,6 +1,4 @@
 export type SortingAlgorithmType =
-  | "bubble"
-  | "selection"
-  | "insertion"
-  | "merge"
-  | "quick";
+  | "Bubble Sort"
+  | "Selection Sort"
+  | "Insertion Sort";
