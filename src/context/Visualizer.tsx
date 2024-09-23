@@ -28,7 +28,7 @@ export const SortingAlgorithmProvider = ({
 }) => {
   const [arrayToSort, setArrayToSort] = useState<number[]>([100, 300, 250, 75]);
   const [selectedAlgorithm, setSelectedAlgorithm] =
-    useState<SortingAlgorithmType>("bubble");
+    useState<SortingAlgorithmType>("Bubble Sort");
   const [isSorting, setIsSorting] = useState<boolean>(false);
   const [animationSpeed, setAnimationSpeed] =
     useState<number>(MAX_ANIMATION_SPEED);
