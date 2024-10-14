@@ -3,8 +3,12 @@ import arrowDown from "../assets/arrowDown.svg";
 import { useState } from "react";
 import { SortingAlgorithmType } from "../lib/types";
 
+interface algoRec {
+  categories: { catName: string; types: object[] }[];
+}
+
 export default function expandableList(
-  lists: object,
+  lists: algoRec,
   selectedAlgorithm: SortingAlgorithmType,
   setAlgo: (algo: SortingAlgorithmType) => void
 ) {
@@ -20,37 +24,41 @@ export default function expandableList(
 
   let divs = [];
 
-  for (let [key, value] of Object.entries(lists)) {
+  for (let i = 0; i < lists.categories.length; i++) {
     divs.push(
       <>
-        <div key={key} className="flex flex-col">
+        <div key={lists.categories[i].catName} className="flex flex-col">
           <button
-            onClick={(e) => toggleLists(key)}
+            onClick={(e) => toggleLists(lists.categories[i].catName)}
             className={`flex w-full justify-between items-center p-2 ${
-              expandedList?.includes(key)
+              expandedList?.includes(lists.categories[i].catName)
                 ? "bg-grey-light font-bold"
                 : "bg-grey hover:bg-grey-light hover:font-bold"
             }`}
           >
-            <h3> {key} </h3>
+            <h3> {lists.categories[i].catName} </h3>
             <img
-              src={expandedList?.includes(key) ? arrowDown : arrowRight}
+              src={
+                expandedList?.includes(lists.categories[i].catName)
+                  ? arrowDown
+                  : arrowRight
+              }
             ></img>
           </button>
         </div>
-        {expandedList?.includes(key) && (
+        {expandedList?.includes(lists.categories[i].catName) && (
           <div className="flex flex-col">
-            {value.map((item: SortingAlgorithmType) => (
+            {lists.categories[i].types.map((item: SortingAlgorithmType) => (
               <button
-                onClick={() => setAlgo(item)}
-                key={item}
+                onClick={() => setAlgo(item.name)}
+                key={item.name}
                 className={`py-2 px-4 text-left ${
-                  selectedAlgorithm === item
+                  selectedAlgorithm === item.name
                     ? "bg-grey-dark"
                     : "hover:bg-grey-dark"
                 }`}
               >
-                {item}
+                {item.name}
               </button>
             ))}
           </div>
@@ -58,5 +66,6 @@ export default function expandableList(
       </>
     );
   }
+
   return divs;
 }
