@@ -3,22 +3,36 @@ import { Sidebar } from "../../components/sidebar";
 import { useEffect } from "react";
 import { useSortingAlgorithmContext } from "../../context/Visualizer";
 import expandableList from "../../components/expandableList";
+import sortingAlgorithms from "../../providers/sortingAlgorithms.json";
+import { Slider } from "../../components/input/slider";
+import { generateAnimationArray } from "../../lib/utils";
 
 export default function SortingIndex() {
-  const { arrayToSort, isSorting, selectedAlgorithm, setSelectedAlgorithm } =
-    useSortingAlgorithmContext();
+  const {
+    arrayToSort,
+    isSorting,
+    selectedAlgorithm,
+    setSelectedAlgorithm,
+    setAnimationSpeed,
+    animationSpeed,
+    requiresReset,
+    resetArrayAndAnimation,
+    runAnimation,
+  } = useSortingAlgorithmContext();
 
-  const algorithmTypes = {
-    "Brute Force": ["Bubble Sort", "Selection Sort", "Insertion Sort"],
-    "Divide and Conquer": ["Merge Sort", "Quick Sort"],
-    Recursive: ["Cycle Detection", "Nth Factorial", "Fibonacci Sequence"],
+  const handlePlay = () => {
+    if (requiresReset) {
+      resetArrayAndAnimation();
+      return;
+    }
+
+    generateAnimationArray(
+      selectedAlgorithm,
+      isSorting,
+      arrayToSort,
+      runAnimation
+    );
   };
-
-  useEffect(() => {
-    console.log(arrayToSort);
-    console.log(isSorting);
-    console.log(selectedAlgorithm);
-  }, []);
 
   return (
     <>
@@ -31,15 +45,44 @@ export default function SortingIndex() {
             <h2 className="text-lg text-center py-6">Sorting Algorithms</h2>
             <div className="flex flex-col text-sm">
               {expandableList(
-                algorithmTypes,
+                sortingAlgorithms,
                 selectedAlgorithm,
                 setSelectedAlgorithm
               )}
             </div>
           </Sidebar>
-          <div className="bg-black flex-1"></div>
+          <div className="flex-1 flex flex-col">
+            <div
+              id="content-container"
+              className="bg-black flex-1 bottom-[32px] justify-center flex items-end mx-12"
+            >
+              {arrayToSort.map((value, index) => (
+                <div
+                  key={index}
+                  className="array-line relative w-4 mx-0.5 shadow-lg opacity-70 rounded-lg default-line-color"
+                  style={{ height: `${value}px` }}
+                ></div>
+              ))}
+            </div>
+            <div id="draggable" className="bg-grey h-2 cursor-row-resize"></div>
+            <div id="bottom-panel" className="flex-1">
+              Another bar
+            </div>
+          </div>
           <Sidebar style={"right"}>
-            <div className="bg-grey-light p-4 text-center">Slow Fast, Play</div>
+            <div className="flex items-center justify-center gap-4">
+              <Slider
+                isDisabled={isSorting}
+                value={animationSpeed}
+                handleChange={(e) => setAnimationSpeed(Number(e.target.value))}
+              />
+              <button
+                className="flex items-center justify-center"
+                onClick={handlePlay}
+              >
+                {requiresReset ? "Reset" : "Start"}
+              </button>
+            </div>
             <h2 className="text-lg text-center py-6">Insertion Sort</h2>
             <div className="flex border-t-2 border-b-2 border-grey-light">
               <button className="flex-1 bg-grey-light py-2">Info</button>
@@ -55,7 +98,11 @@ export default function SortingIndex() {
               {
                 /// REPLACE IMAGE WITH A GIF ///
               }
-              <img src={insertionSortImage} alt="" />
+              <img
+                src={insertionSortImage}
+                alt=""
+                className="w-48 self-center"
+              />
               <div className="grid grid-cols-2 gap-1">
                 <p className="col-start-1 col-end-3 text-center font-bold">
                   Time Complexity
