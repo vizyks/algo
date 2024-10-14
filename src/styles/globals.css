@@ -21,3 +21,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.default-line-color {
+  background-color: white;
+}
+
+.change-line-color {
+  background-color: green;
+}
