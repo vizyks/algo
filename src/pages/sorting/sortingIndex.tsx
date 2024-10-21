@@ -1,6 +1,6 @@
 import insertionSortImage from "../../assets/insertionSort.png";
 import { Sidebar } from "../../components/sidebar";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSortingAlgorithmContext } from "../../context/Visualizer";
 import expandableList from "../../components/expandableList";
 import sortingAlgorithms from "../../providers/sortingAlgorithms.json";
@@ -64,7 +64,10 @@ export default function SortingIndex() {
                 ></div>
               ))}
             </div>
-            <div id="draggable" className="bg-grey h-2 cursor-row-resize"></div>
+            <div
+              id="draggable"
+              className="bg-grey h-2 cursor-row-resize absolute top-0 bottom-0 w-4 z-10"
+            ></div>
             <div id="bottom-panel" className="flex-1">
               Another bar
             </div>
