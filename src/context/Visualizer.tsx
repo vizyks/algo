@@ -61,7 +61,9 @@ export const SortingAlgorithmProvider = ({
     const tempArray: number[] = [];
     const numLines = contentContainerWidth / 24;
     const containerHeight = window.innerHeight;
-    const maxLineHeight = Math.max(containerHeight - 420, 100);
+    // 620 is the size of bottom container, can possible make it dynamic
+    const maxLineHeight = Math.max(containerHeight - 620, 100);
+    //console.log(containerHeight, maxLineHeight);
     for (let i = 0; i < numLines; i++) {
       tempArray.push(generateRandomNumberFromInterval(35, maxLineHeight));
     }
@@ -70,6 +72,7 @@ export const SortingAlgorithmProvider = ({
     setIsAnimationComplete(false);
     setIsSorting(false);
 
+    // Clears animation queue
     const hightestId = window.setTimeout(() => {
       for (let i = hightestId; i >= 0; i--) {
         window.clearTimeout(i);
