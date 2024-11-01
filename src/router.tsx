@@ -4,6 +4,7 @@ import Home from "./pages/home/home.tsx";
 import SortingIndex from "./pages/sorting/sortingIndex.tsx";
 import { SortingAlgorithmProvider } from "./context/Visualizer.tsx";
 
+// CREATE ERROR HANDLER
 function Router() {
   const router = createBrowserRouter([
     {
@@ -20,6 +21,16 @@ function Router() {
               <SortingIndex />
             </SortingAlgorithmProvider>
           ),
+          children: [
+            {
+              path: ":category/:algorithm",
+              element: (
+                <SortingAlgorithmProvider>
+                  <SortingIndex />
+                </SortingAlgorithmProvider>
+              ),
+            },
+          ],
         },
       ],
     },

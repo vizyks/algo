@@ -2,6 +2,7 @@ import arrowRight from "../assets/arrowRight.svg";
 import arrowDown from "../assets/arrowDown.svg";
 import { useState } from "react";
 import { SortingAlgorithmType, SortingAlgorithmOptions } from "../lib/types";
+import { Link } from "react-router-dom";
 
 export default function expandableList(
   list: SortingAlgorithmOptions,
@@ -18,13 +19,17 @@ export default function expandableList(
     }
   };
 
+  const generateCleanUrl = (url: string) => {
+    return url.replace(/\s+/g, "-").toLowerCase();
+  };
+
   let divs = [];
 
   for (const value of Object.values(list)) {
     divs.push(
       <div key={value.cat} data-id={value.cat} className="flex flex-col">
         <button
-          onClick={(e) => toggleLists(value.cat)}
+          onClick={() => toggleLists(value.cat)}
           className={`flex w-full justify-between items-center p-2 ${
             expandedList?.includes(value.cat)
               ? "bg-grey-light font-bold"
@@ -40,9 +45,10 @@ export default function expandableList(
           <div className="flex flex-col">
             {value.types.map((item: SortingAlgorithmType) => {
               return (
-                <button
+                <Link
                   onClick={() => setAlgo(item)}
                   key={item}
+                  to={generateCleanUrl(`${value.cat}/${item}`)}
                   className={`py-2 px-4 text-left ${
                     selectedAlgorithm === item
                       ? "bg-grey-dark"
@@ -50,7 +56,7 @@ export default function expandableList(
                   }`}
                 >
                   {item}
-                </button>
+                </Link>
               );
             })}
           </div>
