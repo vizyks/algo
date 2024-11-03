@@ -1,8 +1,8 @@
 import arrowRight from "../assets/arrowRight.svg";
 import arrowDown from "../assets/arrowDown.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SortingAlgorithmType, SortingAlgorithmOptions } from "../lib/types";
-import { Link } from "react-router-dom";
+import { Link, useMatch } from "react-router-dom";
 
 export default function expandableList(
   list: SortingAlgorithmOptions,
@@ -10,6 +10,31 @@ export default function expandableList(
   setAlgo: (algo: SortingAlgorithmType) => void
 ) {
   const [expandedList, setExpandedList] = useState<string[]>([]);
+  const match = useMatch("/sorting-algorithms/:category/:algorithm");
+
+  // useEffect to set UI state based on if an algorithm/category is accessed directly
+  // by URL and not clicking list buttons
+  useEffect(() => {
+    if (!match) return;
+    let algorithm = match.params.algorithm;
+    let category = match.params.category;
+    if (!algorithm || !category) return;
+
+    // convert URL params to fit the type required
+    const recreate = (url: string) => {
+      // if word = and don't capitalize (temp fix to not capitalize certain words)
+      return url
+        .split("-")
+        .map((word: string) => {
+          if (word === "and") return word;
+          return word.charAt(0).toUpperCase() + word.slice(1);
+        })
+        .join(" ");
+    };
+
+    setAlgo(recreate(algorithm) as SortingAlgorithmType);
+    toggleLists(recreate(category));
+  }, []);
 
   const toggleLists = (listName: string) => {
     if (expandedList.includes(listName)) {
@@ -36,7 +61,7 @@ export default function expandableList(
               : "bg-grey hover:bg-grey-light hover:font-bold"
           }`}
         >
-          <h3> {value.cat} </h3>
+          <h3>{value.cat}</h3>
           <img
             src={expandedList?.includes(value.cat) ? arrowDown : arrowRight}
           ></img>
