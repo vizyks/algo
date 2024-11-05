@@ -14,7 +14,7 @@ export default function PanelResizeHandle() {
     let topHeight = 0;
     let bottomHeight = 0;
 
-    const mouseDownHandler = (e) => {
+    const mouseDownHandler = (e: MouseEvent) => {
       if (!top || !bottom) return;
 
       topHeight = top.getBoundingClientRect().height;
@@ -27,7 +27,7 @@ export default function PanelResizeHandle() {
       document.addEventListener("mousemove", mouseMoveHandler);
     };
 
-    const mouseMoveHandler = (e) => {
+    const mouseMoveHandler = (e: MouseEvent) => {
       const dy = e.clientY - y;
       const parentHeight = resizeBar?.current?.parentNode as HTMLElement;
       let maxNum = 1;
@@ -37,7 +37,7 @@ export default function PanelResizeHandle() {
         parentHeight.getBoundingClientRect().height
       ).toFixed(6);
 
-      let newBottomHeight = (maxNum - newTopHeight).toFixed(6);
+      let newBottomHeight = (maxNum - Number(newTopHeight)).toFixed(6);
 
       let num1 = Math.min(Math.max(parseFloat(newTopHeight), 0), maxNum);
       let num2 = Math.min(Math.max(parseFloat(newBottomHeight), 0), maxNum);
