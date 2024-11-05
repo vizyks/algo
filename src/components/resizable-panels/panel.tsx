@@ -1,8 +1,17 @@
 import React from "react";
 
-export default function Panel({ children }: { children: React.ReactNode }) {
+export default function Panel({
+  children,
+  title,
+}: {
+  children: React.ReactNode;
+  title: string;
+}) {
   return (
-    <div className="flex flex-1 grow-[0.50] justify-center items-center overflow-hidden">
+    <div className="flex flex-1 grow-[0.50] overflow-hidden relative justify-center items-center">
+      <span className="bg-grey-light py-1 px-2 absolute top-0 left-0">
+        {title}
+      </span>
       {children}
     </div>
   );

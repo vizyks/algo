@@ -10,7 +10,7 @@ export function MainView() {
 
   return (
     <PanelGroup>
-      <Panel>
+      <Panel title="Chart">
         <div
           id="content-container"
           className="bg-black flex-1 justify-center flex items-end mx-12"
@@ -25,7 +25,7 @@ export function MainView() {
         </div>
       </Panel>
       <PanelResizeHandle />
-      <Panel>Bottom</Panel>
+      <Panel title="Array">Bottom</Panel>
     </PanelGroup>
   );
 }
