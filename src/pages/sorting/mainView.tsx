@@ -18,7 +18,7 @@ export function MainView() {
           {arrayToSort.map((value, index) => (
             <div
               key={index}
-              className="array-line relative w-4 mx-0.5 shadow-lg opacity-70 rounded-lg default-line-color"
+              className="array-line relative w-4 mx-0.5 shadow-lg opacity-70 default-line-color"
               style={{ height: `${value}px` }}
             ></div>
           ))}
