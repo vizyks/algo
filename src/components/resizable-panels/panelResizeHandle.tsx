@@ -69,7 +69,9 @@ export default function PanelResizeHandle() {
   return (
     <div
       ref={resizeBar}
-      className="bg-grey-light cursor-ns-resize h-[2px] w-full"
-    ></div>
+      className="cursor-ns-resize h-[7px] relative my-[-3px] z-10"
+    >
+      <div className="bg-grey-light cursor-ns-resize h-[2px] w-full absolute top-[3px]"></div>
+    </div>
   );
 }
