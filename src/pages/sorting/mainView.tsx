@@ -13,7 +13,7 @@ export function MainView() {
       <Panel title="Chart">
         <div
           id="chart-container"
-          className="bg-black flex-1 justify-center flex items-end mx-12 mb-2"
+          className="bg-black flex-1 flex items-end justify-center mx-12 mb-2"
         >
           {arrayToSort.map((value, index) => (
             <div
