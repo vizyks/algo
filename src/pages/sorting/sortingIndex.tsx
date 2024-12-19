@@ -1,6 +1,6 @@
 import { SidebarLeft } from "./sidebarLeft";
 import { SidebarRight } from "./sidebarRight";
-import { MainView } from "./mainView";
+import { Outlet } from "react-router-dom";
 
 export default function SortingIndex() {
   return (
@@ -8,7 +8,7 @@ export default function SortingIndex() {
       <main className="h-screen w-screen bg-black text-white font-krub">
         <div className="flex h-full">
           <SidebarLeft />
-          <MainView />
+          <Outlet />
           <SidebarRight />
         </div>
       </main>
