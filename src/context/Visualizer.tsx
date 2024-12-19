@@ -63,12 +63,21 @@ export const SortingAlgorithmProvider = ({
     const numLines = chartContainerWidth / 24;
     const containerHeight = window.innerHeight;
     // 600 is the size of bottom container, can possible make it dynamic (replace with arrayContainerHeight)
+
+    /*
     const maxLineHeight = Math.max(
       containerHeight - arrayContainerHeight - 16,
       100
     );
+    
     for (let i = 0; i < numLines; i++) {
       tempArray.push(generateRandomNumberFromInterval(35, maxLineHeight));
+    }
+    */
+
+    // Height 5-95 used as a percentage to create a dynamic height when adjusting panels.
+    for (let i = 0; i < numLines; i++) {
+      tempArray.push(generateRandomNumberFromInterval(5, 95));
     }
 
     setArrayToSort(tempArray);
@@ -117,7 +126,7 @@ export const SortingAlgorithmProvider = ({
       newHeight: number | undefined
     ) => {
       if (newHeight === undefined) return;
-      arrayLines[lineIndex].style.height = `${newHeight}px`;
+      arrayLines[lineIndex].style.height = `${newHeight}%`;
     };
 
     animations.forEach((animation, index) => {

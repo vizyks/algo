@@ -19,7 +19,7 @@ export function MainView() {
             <div
               key={index}
               className="array-line relative w-4 mx-0.5 shadow-lg opacity-70 default-line-color"
-              style={{ height: `${value}px` }}
+              style={{ height: `${value}%` }}
             ></div>
           ))}
         </div>
