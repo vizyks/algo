@@ -8,7 +8,11 @@ export default function Panel({
   title: string;
 }) {
   return (
-    <div className="flex flex-1 grow-[0.50] overflow-hidden relative justify-center items-center">
+    <div
+      className={`flex flex-1 grow-[0.50] overflow-hidden relative ${
+        title === "Chart" ? "" : "items-center"
+      } justify-center`}
+    >
       <span className="bg-grey-light py-1 px-2 absolute top-0 left-0">
         {title}
       </span>

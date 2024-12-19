@@ -44,26 +44,29 @@ export const SortingAlgorithmProvider = ({
   useEffect(() => {
     resetArrayAndAnimation();
 
-    /* Auto resize array based on resizing of window
-    window.addEventListener("resize", resetArrayAndAnimation);
+    //Auto resize array based on resizing of window
+    // window.addEventListener("resize", resetArrayAndAnimation);
 
-    return () => {
-      window.removeEventListener("resize", resetArrayAndAnimation);
-    };
-    */
+    // return () => {
+    //   window.removeEventListener("resize", resetArrayAndAnimation);
+    // };
   }, []);
 
   const resetArrayAndAnimation = () => {
-    const contentContainer = document.getElementById("content-container");
-    if (!contentContainer) return;
+    const chartContainer = document.getElementById("chart-container");
+    const arrayContainer = document.getElementById("array-container");
+    if (!chartContainer || !arrayContainer) return;
 
-    const contentContainerWidth = contentContainer.clientWidth;
+    const chartContainerWidth = chartContainer.clientWidth;
+    const arrayContainerHeight = arrayContainer.clientHeight;
     const tempArray: number[] = [];
-    const numLines = contentContainerWidth / 24;
+    const numLines = chartContainerWidth / 24;
     const containerHeight = window.innerHeight;
-    // 620 is the size of bottom container, can possible make it dynamic
-    const maxLineHeight = Math.max(containerHeight - 620, 100);
-    //console.log(containerHeight, maxLineHeight);
+    // 600 is the size of bottom container, can possible make it dynamic (replace with arrayContainerHeight)
+    const maxLineHeight = Math.max(
+      containerHeight - arrayContainerHeight - 16,
+      100
+    );
     for (let i = 0; i < numLines; i++) {
       tempArray.push(generateRandomNumberFromInterval(35, maxLineHeight));
     }

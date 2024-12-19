@@ -12,8 +12,8 @@ export function MainView() {
     <PanelGroup>
       <Panel title="Chart">
         <div
-          id="content-container"
-          className="bg-black flex-1 justify-center flex items-end mx-12"
+          id="chart-container"
+          className="bg-black flex-1 justify-center flex items-end mx-12 mb-2"
         >
           {arrayToSort.map((value, index) => (
             <div
@@ -25,7 +25,12 @@ export function MainView() {
         </div>
       </Panel>
       <PanelResizeHandle />
-      <Panel title="Array">Bottom</Panel>
+      <Panel title="Array">
+        <div
+          id="array-container"
+          className="flex flex-1 h-full justify-center items-center"
+        ></div>
+      </Panel>
     </PanelGroup>
   );
 }
