@@ -7,32 +7,33 @@ function Home() {
       switch (i) {
         case 8:
           grid.push(
-            <>
-              <div className="bg-red-600 size-8 border-2 border-grey"></div>
-            </>
+            <div
+              key={i}
+              className="bg-red-600 size-8 border-2 border-grey"
+            ></div>
           );
           break;
         case 16:
           grid.push(
-            <>
-              <div className="bg-green-600 size-8 border-2 border-grey"></div>
-            </>
+            <div
+              key={i}
+              className="bg-green-600 size-8 border-2 border-grey"
+            ></div>
           );
           break;
         case 6:
         case 7:
         case 11:
           grid.push(
-            <>
-              <div className="bg-grey-light size-8 border-2 border-grey"></div>
-            </>
+            <div
+              key={i}
+              className="bg-grey-light size-8 border-2 border-grey"
+            ></div>
           );
           break;
         default:
           grid.push(
-            <>
-              <div className="bg-white size-8 border-2 border-grey"></div>
-            </>
+            <div key={i} className="bg-white size-8 border-2 border-grey"></div>
           );
       }
     }
