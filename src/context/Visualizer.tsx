@@ -32,7 +32,7 @@ export const SortingAlgorithmProvider = ({
 }) => {
   const [arrayToSort, setArrayToSort] = useState<number[]>([]);
   const [selectedAlgorithm, setSelectedAlgorithm] =
-    useState<SortingAlgorithmType>("Bubble Sort");
+    useState<SortingAlgorithmType>();
   const [isSorting, setIsSorting] = useState<boolean>(false);
   const [animationSpeed, setAnimationSpeed] =
     useState<number>(MAX_ANIMATION_SPEED);
@@ -51,6 +51,10 @@ export const SortingAlgorithmProvider = ({
     //   window.removeEventListener("resize", resetArrayAndAnimation);
     // };
   }, []);
+
+  useEffect(() => {
+    resetArrayAndAnimation();
+  }, [selectedAlgorithm]);
 
   const resetArrayAndAnimation = () => {
     const chartContainer = document.getElementById("chart-container");
