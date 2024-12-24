@@ -1,7 +1,7 @@
 import { generateBubbleSortArrayAnimation } from "../algorithms/bubbleSort";
 import { AnimationArrayType, SortingAlgorithmType } from "./types";
 
-export const MIN_ANIMATION_SPEED = 100;
+export const MIN_ANIMATION_SPEED = 10;
 export const MAX_ANIMATION_SPEED = 400;
 
 export function generateRandomNumberFromInterval(min: number, max: number) {
