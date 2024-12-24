@@ -42,7 +42,6 @@ export const SortingAlgorithmProvider = ({
   const requiresReset = isAnimationComplete || isSorting;
 
   useEffect(() => {
-    // resetArrayAndAnimation();
     //Auto resize array based on resizing of window
     // window.addEventListener("resize", resetArrayAndAnimation);
     // return () => {
@@ -60,10 +59,8 @@ export const SortingAlgorithmProvider = ({
     if (!chartContainer || !arrayContainer) return;
 
     const chartContainerWidth = chartContainer.clientWidth;
-    const arrayContainerHeight = arrayContainer.clientHeight;
     const tempArray: number[] = [];
     const numLines = chartContainerWidth / 24;
-    const containerHeight = window.innerHeight;
 
     // Height %5-%95 to create a dynamic height (stretch/flex effect) when adjusting panels.
     for (let i = 0; i < numLines; i++) {
