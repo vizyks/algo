@@ -1,4 +1,5 @@
 export type SortingAlgorithmType =
+  | undefined
   | "Bubble Sort"
   | "Selection Sort"
   | "Insertion Sort"

@@ -31,9 +31,8 @@ export const SortingAlgorithmProvider = ({
   children: React.ReactNode;
 }) => {
   const [arrayToSort, setArrayToSort] = useState<number[]>([]);
-  const [selectedAlgorithm, setSelectedAlgorithm] = useState<
-    SortingAlgorithmType | undefined
-  >();
+  const [selectedAlgorithm, setSelectedAlgorithm] =
+    useState<SortingAlgorithmType>();
   const [isSorting, setIsSorting] = useState<boolean>(false);
   const [animationSpeed, setAnimationSpeed] =
     useState<number>(MAX_ANIMATION_SPEED);
@@ -43,11 +42,9 @@ export const SortingAlgorithmProvider = ({
   const requiresReset = isAnimationComplete || isSorting;
 
   useEffect(() => {
-    resetArrayAndAnimation();
-
+    // resetArrayAndAnimation();
     //Auto resize array based on resizing of window
     // window.addEventListener("resize", resetArrayAndAnimation);
-
     // return () => {
     //   window.removeEventListener("resize", resetArrayAndAnimation);
     // };
