@@ -8,7 +8,7 @@ import {
 interface SortingAlgorithmContextType {
   arrayToSort: number[];
   setArrayToSort: (array: number[]) => void;
-  selectedAlgorithm: SortingAlgorithmType;
+  selectedAlgorithm: SortingAlgorithmType | undefined;
   setSelectedAlgorithm: (algorithm: SortingAlgorithmType) => void;
   isSorting: boolean;
   setIsSorting: (isSorting: boolean) => void;
@@ -31,8 +31,9 @@ export const SortingAlgorithmProvider = ({
   children: React.ReactNode;
 }) => {
   const [arrayToSort, setArrayToSort] = useState<number[]>([]);
-  const [selectedAlgorithm, setSelectedAlgorithm] =
-    useState<SortingAlgorithmType>();
+  const [selectedAlgorithm, setSelectedAlgorithm] = useState<
+    SortingAlgorithmType | undefined
+  >();
   const [isSorting, setIsSorting] = useState<boolean>(false);
   const [animationSpeed, setAnimationSpeed] =
     useState<number>(MAX_ANIMATION_SPEED);
@@ -66,20 +67,8 @@ export const SortingAlgorithmProvider = ({
     const tempArray: number[] = [];
     const numLines = chartContainerWidth / 24;
     const containerHeight = window.innerHeight;
-    // 600 is the size of bottom container, can possible make it dynamic (replace with arrayContainerHeight)
 
-    /*
-    const maxLineHeight = Math.max(
-      containerHeight - arrayContainerHeight - 16,
-      100
-    );
-    
-    for (let i = 0; i < numLines; i++) {
-      tempArray.push(generateRandomNumberFromInterval(35, maxLineHeight));
-    }
-    */
-
-    // Height 5-95 used as a percentage to create a dynamic height when adjusting panels.
+    // Height %5-%95 to create a dynamic height (stretch/flex effect) when adjusting panels.
     for (let i = 0; i < numLines; i++) {
       tempArray.push(generateRandomNumberFromInterval(5, 95));
     }
