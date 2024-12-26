@@ -14,6 +14,5 @@ export function useToggle(defaultValue?: boolean): [boolean, () => void] {
   }, []);
  */
 
-  console.log(value);
   return [value, toggle];
 }
