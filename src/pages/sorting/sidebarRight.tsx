@@ -36,9 +36,7 @@ export function SidebarRight() {
 
   return (
     <Sidebar style={"right"}>
-      {!selectedAlgorithm ? (
-        ""
-      ) : (
+      {selectedAlgorithm && (
         <>
           <div className="flex items-center justify-center gap-4">
             <Slider
