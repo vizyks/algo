@@ -1,6 +1,6 @@
 import { AnimationArrayType } from "../lib/types";
 
-function runBubbleSort(array: number[], animations: AnimationArrayType) {
+export function runBubbleSort(array: number[], animations: AnimationArrayType) {
   for (let i = 0; i < array.length - 1; i++) {
     for (let j = 0; j < array.length - 1 - i; j++) {
       // Highlight two elements being compared and sorted [[index of line, index of line], false]
