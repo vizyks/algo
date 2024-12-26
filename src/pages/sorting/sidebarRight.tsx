@@ -1,6 +1,8 @@
 import { Sidebar } from "../../components/sidebar";
 import { Slider } from "../../components/input/slider";
 import { InfoView } from "./infoView";
+import { CodeView } from "./codeView";
+import { useToggle } from "../../lib/hooks";
 import { useSortingAlgorithmContext } from "../../context/Visualizer";
 import { generateAnimationArray, sortingAlgorithmData } from "../../lib/utils";
 
@@ -15,6 +17,8 @@ export function SidebarRight() {
     arrayToSort,
     runAnimation,
   } = useSortingAlgorithmContext();
+
+  const [value, toggle] = useToggle(true);
 
   const handlePlay = () => {
     if (requiresReset) {
@@ -53,10 +57,26 @@ export function SidebarRight() {
             {sortingAlgorithmData[selectedAlgorithm].title}
           </h2>
           <div className="flex border-t-2 border-b-2 border-grey-light">
-            <button className="flex-1 bg-grey-light py-2">Info</button>
-            <button className="flex-1 hover:bg-grey-light">Code</button>
+            <button
+              onClick={toggle}
+              disabled={value}
+              className="flex-1 bg-grey-light py-2 cursor-pointer"
+            >
+              Info
+            </button>
+            <button
+              onClick={toggle}
+              disabled={!value}
+              className="flex-1 hover:bg-grey-light cursor-pointer"
+            >
+              Code
+            </button>
           </div>
-          <InfoView selectedAlgorithm={selectedAlgorithm} />
+          {value ? (
+            <InfoView selectedAlgorithm={selectedAlgorithm} />
+          ) : (
+            <CodeView />
+          )}
         </>
       )}
     </Sidebar>
