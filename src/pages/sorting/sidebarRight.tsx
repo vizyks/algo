@@ -58,14 +58,18 @@ export function SidebarRight() {
             <button
               onClick={toggle}
               disabled={value}
-              className="flex-1 bg-grey-light py-2 cursor-pointer"
+              className={`flex-1 hover:bg-grey-light py-2 cursor-pointer ${
+                value && "bg-grey-light"
+              }`}
             >
               Info
             </button>
             <button
               onClick={toggle}
               disabled={!value}
-              className="flex-1 hover:bg-grey-light cursor-pointer"
+              className={`flex-1 hover:bg-grey-light py-2 cursor-pointer ${
+                !value && "bg-grey-light"
+              }`}
             >
               Code
             </button>
