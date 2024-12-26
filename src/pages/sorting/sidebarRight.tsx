@@ -1,8 +1,8 @@
 import { Sidebar } from "../../components/sidebar";
 import { Slider } from "../../components/input/slider";
+import { InfoView } from "./infoView";
 import { useSortingAlgorithmContext } from "../../context/Visualizer";
 import { generateAnimationArray, sortingAlgorithmData } from "../../lib/utils";
-import insertionSortImage from "../../assets/insertionSort.png";
 
 export function SidebarRight() {
   const {
@@ -56,51 +56,7 @@ export function SidebarRight() {
             <button className="flex-1 bg-grey-light py-2">Info</button>
             <button className="flex-1 hover:bg-grey-light">Code</button>
           </div>
-          <div className="flex flex-col py-8 px-4 gap-4">
-            <div className="text-center">
-              {sortingAlgorithmData[selectedAlgorithm].desc}
-            </div>
-            {
-              /// REPLACE IMAGE WITH A GIF ///
-            }
-            <img src={insertionSortImage} alt="" className="w-48 self-center" />
-            <div className="grid grid-cols-2 gap-1">
-              <p className="col-start-1 col-end-3 text-center font-bold">
-                Time Complexity
-              </p>
-              <p>Worst Case:</p>
-              <p className="text-right">
-                {
-                  sortingAlgorithmData[selectedAlgorithm].timeComplexity
-                    .worstCase
-                }
-              </p>
-              <p>Average Case:</p>
-              <p className="text-right">
-                {
-                  sortingAlgorithmData[selectedAlgorithm].timeComplexity
-                    .averageCase
-                }
-              </p>
-              <p>Best Case:</p>
-              <p className="text-right">
-                {
-                  sortingAlgorithmData[selectedAlgorithm].timeComplexity
-                    .bestCase
-                }
-              </p>
-            </div>
-            <div className="text-center">
-              <p className="font-bold ">References</p>
-              <a
-                href="https://en.wikipedia.org/wiki/Insertion_sort"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Wikipedia
-              </a>
-            </div>
-          </div>
+          <InfoView selectedAlgorithm={selectedAlgorithm} />
         </>
       )}
     </Sidebar>
