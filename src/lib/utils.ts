@@ -38,6 +38,7 @@ export const sortingAlgorithmOptions = {
   },
 };
 
+/// ALL ALGO'S HAVE THE SAME CODE SNIPPET TEMPORARILY ///
 export const sortingAlgorithmData = {
   "Bubble Sort": {
     title: "Bubble Sort",
@@ -47,6 +48,27 @@ export const sortingAlgorithmData = {
       averageCase: "O(n^2)",
       bestCase: "O(n)",
     },
+    codeSnippet: `// javascript
+    function runBubbleSort(arr) {
+      for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = 0; j < arr.length - 1 - i; j++) {
+          if (arr[j] > arr[j + 1]) {
+            // Swap
+            let tmp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = tmp;
+    
+            // Another swap method
+            // [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+          }
+        }
+      }
+    }
+    
+    // typescript
+    function runBubbleSort(arr: number[]): void {
+      ...
+    }`,
   },
   "Selection Sort": {
     title: "Selection Sort",
@@ -56,6 +78,27 @@ export const sortingAlgorithmData = {
       averageCase: "O(n^2)",
       bestCase: "O(n^2)",
     },
+    codeSnippet: `// javascript
+    function runBubbleSort(arr) {
+      for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = 0; j < arr.length - 1 - i; j++) {
+          if (arr[j] > arr[j + 1]) {
+            // Swap
+            let tmp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = tmp;
+    
+            // Another swap method
+            // [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+          }
+        }
+      }
+    }
+    
+    // typescript
+    function runBubbleSort(arr: number[]): void {
+      ...
+    }`,
   },
   "Insertion Sort": {
     title: "Insertion Sort",
@@ -65,6 +108,27 @@ export const sortingAlgorithmData = {
       averageCase: "O(n^2)",
       bestCase: "O(n)",
     },
+    codeSnippet: `// javascript
+    function runBubbleSort(arr) {
+      for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = 0; j < arr.length - 1 - i; j++) {
+          if (arr[j] > arr[j + 1]) {
+            // Swap
+            let tmp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = tmp;
+    
+            // Another swap method
+            // [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+          }
+        }
+      }
+    }
+    
+    // typescript
+    function runBubbleSort(arr: number[]): void {
+      ...
+    }`,
   },
   "Merge Sort": {
     title: "Merge Sort",
@@ -74,6 +138,27 @@ export const sortingAlgorithmData = {
       averageCase: "O(n log(n))",
       bestCase: "O(n log(n))",
     },
+    codeSnippet: `// javascript
+    function runBubbleSort(arr) {
+      for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = 0; j < arr.length - 1 - i; j++) {
+          if (arr[j] > arr[j + 1]) {
+            // Swap
+            let tmp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = tmp;
+    
+            // Another swap method
+            // [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+          }
+        }
+      }
+    }
+    
+    // typescript
+    function runBubbleSort(arr: number[]): void {
+      ...
+    }`,
   },
   "Quick Sort": {
     title: "Quick Sort",
@@ -83,6 +168,27 @@ export const sortingAlgorithmData = {
       averageCase: "O(n log(n))",
       bestCase: "O(n log(n))",
     },
+    codeSnippet: `// javascript
+    function runBubbleSort(arr) {
+      for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = 0; j < arr.length - 1 - i; j++) {
+          if (arr[j] > arr[j + 1]) {
+            // Swap
+            let tmp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = tmp;
+    
+            // Another swap method
+            // [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+          }
+        }
+      }
+    }
+    
+    // typescript
+    function runBubbleSort(arr: number[]): void {
+      ...
+    }`,
   },
   "Cycle Detection": {
     title: "Cycle Detection",
@@ -92,6 +198,27 @@ export const sortingAlgorithmData = {
       averageCase: "O(n^2)",
       bestCase: "O(n)",
     },
+    codeSnippet: `// javascript
+    function runBubbleSort(arr) {
+      for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = 0; j < arr.length - 1 - i; j++) {
+          if (arr[j] > arr[j + 1]) {
+            // Swap
+            let tmp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = tmp;
+    
+            // Another swap method
+            // [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+          }
+        }
+      }
+    }
+    
+    // typescript
+    function runBubbleSort(arr: number[]): void {
+      ...
+    }`,
   },
   "Nth Factorial": {
     title: "Nth Factorial",
@@ -101,6 +228,27 @@ export const sortingAlgorithmData = {
       averageCase: "O(n)",
       bestCase: "O(n)",
     },
+    codeSnippet: `// javascript
+    function runBubbleSort(arr) {
+      for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = 0; j < arr.length - 1 - i; j++) {
+          if (arr[j] > arr[j + 1]) {
+            // Swap
+            let tmp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = tmp;
+    
+            // Another swap method
+            // [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+          }
+        }
+      }
+    }
+    
+    // typescript
+    function runBubbleSort(arr: number[]): void {
+      ...
+    }`,
   },
   "Fibonacci Sequence": {
     title: "Fibonacci Sequence",
@@ -110,5 +258,26 @@ export const sortingAlgorithmData = {
       averageCase: "O(n)",
       bestCase: "O(n)",
     },
+    codeSnippet: `// javascript
+    function runBubbleSort(arr) {
+      for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = 0; j < arr.length - 1 - i; j++) {
+          if (arr[j] > arr[j + 1]) {
+            // Swap
+            let tmp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = tmp;
+    
+            // Another swap method
+            // [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+          }
+        }
+      }
+    }
+    
+    // typescript
+    function runBubbleSort(arr: number[]): void {
+      ...
+    }`,
   },
 };
