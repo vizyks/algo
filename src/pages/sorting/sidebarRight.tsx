@@ -5,6 +5,8 @@ import { CodeView } from "./codeView";
 import { useToggle } from "../../lib/hooks";
 import { useSortingAlgorithmContext } from "../../context/Visualizer";
 import { generateAnimationArray, sortingAlgorithmData } from "../../lib/utils";
+import play from "../../assets/play.svg";
+import restart from "../../assets/restart.svg";
 
 export function SidebarRight() {
   const {
@@ -38,7 +40,7 @@ export function SidebarRight() {
     <Sidebar style={"right"}>
       {selectedAlgorithm && (
         <>
-          <div className="flex items-center justify-center gap-4">
+          <div className="flex items-center justify-center gap-6 pt-2">
             <Slider
               isDisabled={isSorting}
               value={animationSpeed}
@@ -48,7 +50,15 @@ export function SidebarRight() {
               className="flex items-center justify-center"
               onClick={handlePlay}
             >
-              {requiresReset ? "Reset" : "Start"}
+              {requiresReset ? (
+                <img
+                  className="w-5 hover:scale-110"
+                  src={restart}
+                  alt="restart"
+                />
+              ) : (
+                <img className="w-5 hover:scale-110" src={play} alt="play" />
+              )}
             </button>
           </div>
           <h2 className="text-lg text-center py-6">
