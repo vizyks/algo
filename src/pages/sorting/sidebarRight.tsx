@@ -77,7 +77,7 @@ export function SidebarRight() {
           {value ? (
             <InfoView selectedAlgorithm={selectedAlgorithm} />
           ) : (
-            <CodeView />
+            <CodeView selectedAlgorithm={selectedAlgorithm} />
           )}
         </>
       )}
