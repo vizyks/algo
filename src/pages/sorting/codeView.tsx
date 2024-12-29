@@ -4,6 +4,8 @@ import atomOneDark from "react-syntax-highlighter/dist/esm/styles/hljs/atom-one-
 import { sortingAlgorithmData } from "../../lib/utils";
 import { SortingAlgorithmType } from "../../lib/types";
 import clipboard from "../../assets/clipboard.svg";
+import checkmark from "../../assets/checkmark.svg";
+import { useToggle } from "../../lib/hooks";
 
 SyntaxHighlighter.registerLanguage("javascript", js);
 
@@ -14,13 +16,16 @@ export function CodeView({
 }) {
   if (!selectedAlgorithm) return;
 
-  // switch icon to checkmark when copied and the functionality when clicked to swap back to clipboard to copy again
-  // or add a tooltip that just says "copied".
+  const [value, toggle] = useToggle(true);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(
       sortingAlgorithmData[selectedAlgorithm].codeSnippet
     );
+    toggle();
+    setTimeout(() => {
+      toggle();
+    }, 3000);
   };
 
   return (
@@ -28,13 +33,22 @@ export function CodeView({
       <div className="relative">
         <button
           onClick={copyToClipboard}
-          className="flex items-center justify-center absolute right-0 p-2 h-[44px] w-[44px]"
+          disabled={!value}
+          className="flex items-center justify-center absolute right-0 h-[44px] w-[44px] cursor-pointer"
         >
-          <img
-            className="hover:h-[27px] hover:w-[27px]"
-            src={clipboard}
-            alt="image of a clipboard"
-          />
+          {value ? (
+            <img
+              className="p-2 ease-in-out duration-100 hover:scale-110"
+              src={clipboard}
+              alt="image of a clipboard"
+            />
+          ) : (
+            <img
+              className="p-2 ease-in-out duration-100 hover:scale-110"
+              src={checkmark}
+              alt="image of a checkmark"
+            />
+          )}
         </button>
         <SyntaxHighlighter
           language="typescript"
