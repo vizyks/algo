@@ -5,10 +5,10 @@ export function useToggle(defaultValue?: boolean): [boolean, () => void] {
   const [value, setValue] = useState<boolean>(!!defaultValue);
 
   const toggle = () => {
-    setValue(!value);
+    setValue((x) => !x);
   };
 
-  /* 
+  /*
   const toggle = useCallback(() => {
     setValue((x) => !x);
   }, []);
