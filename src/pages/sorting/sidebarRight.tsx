@@ -40,24 +40,34 @@ export function SidebarRight() {
     <Sidebar style={"right"}>
       {selectedAlgorithm && (
         <>
-          <div className="flex items-center justify-center gap-6 pt-2">
+          <div className="flex items-center justify-center gap-8 h-10 border-b-2 border-grey-light">
             <Slider
               isDisabled={isSorting}
               value={animationSpeed}
               handleChange={(e) => setAnimationSpeed(Number(e.target.value))}
             />
             <button
-              className="flex items-center justify-center"
+              className="group flex items-center justify-center gap-2 p-2"
               onClick={handlePlay}
             >
               {requiresReset ? (
-                <img
-                  className="w-5 hover:scale-110"
-                  src={restart}
-                  alt="restart"
-                />
+                <>
+                  <img
+                    className="w-4 group-hover:scale-110"
+                    src={restart}
+                    alt="restart"
+                  />
+                  <p className="group-hover:font-bold">Restart</p>
+                </>
               ) : (
-                <img className="w-5 hover:scale-110" src={play} alt="play" />
+                <>
+                  <img
+                    className="w-[14px] group-hover:scale-110"
+                    src={play}
+                    alt="play"
+                  />
+                  <p className="group-hover:font-bold">Play</p>
+                </>
               )}
             </button>
           </div>
