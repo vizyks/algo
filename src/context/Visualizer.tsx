@@ -60,7 +60,8 @@ export const SortingAlgorithmProvider = ({
 
     const chartContainerWidth = chartContainer.clientWidth;
     const tempArray: number[] = [];
-    const numLines = chartContainerWidth / 24;
+
+    const numLines = chartContainerWidth / 32;
 
     // Height %5-%95 to create a dynamic height (stretch/flex effect) when adjusting panels.
     for (let i = 0; i < numLines; i++) {
