@@ -3,6 +3,7 @@ import expandableList from "../../components/expandableList";
 import { useSortingAlgorithmContext } from "../../context/Visualizer";
 import { sortingAlgorithmOptions } from "../../lib/utils";
 import { Link } from "react-router-dom";
+import github from "../../assets/github.svg";
 
 export function SidebarLeft() {
   const { selectedAlgorithm, setSelectedAlgorithm } =
@@ -23,6 +24,19 @@ export function SidebarLeft() {
           setSelectedAlgorithm
         )}
       </div>
+      <a
+        href="https://github.com/josephdorman"
+        target="_blank"
+        rel="noreferrer noopener"
+        className="flex justify-center items-center self-center gap-2 mt-auto p-4 group w-fit"
+      >
+        <img
+          className="size-4 group-hover:size-[1.1rem]"
+          src={github}
+          alt="github logo"
+        />
+        <span className="text-sm group-hover:font-bold">josephdorman</span>
+      </a>
     </Sidebar>
   );
 }
