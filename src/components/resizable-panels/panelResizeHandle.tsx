@@ -21,7 +21,6 @@ export default function PanelResizeHandle() {
       bottomHeight = bottom.getBoundingClientRect().height;
 
       y = e.clientY;
-      console.log("clicked");
 
       document.addEventListener("mouseup", mouseUpHandler);
       document.addEventListener("mousemove", mouseMoveHandler);
@@ -44,20 +43,15 @@ export default function PanelResizeHandle() {
 
       top.style.flexGrow = `${num1}`;
       bottom.style.flexGrow = `${num2}`;
-
-      //console.log(num1, num2);
-      console.log("mousemove");
     };
 
     const mouseUpHandler = () => {
-      console.log("mouseup");
       document.removeEventListener("mouseup", mouseUpHandler);
       document.removeEventListener("mousemove", mouseMoveHandler);
     };
 
     // Attach Handler
     resizeBar.current.addEventListener("mousedown", mouseDownHandler);
-    //console.log("attach handler");
 
     // Cleanup
     return () => {
