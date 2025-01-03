@@ -1,6 +1,6 @@
 import { sortingAlgorithmData } from "../../lib/utils";
 import { SortingAlgorithmType } from "../../lib/types";
-import insertionSortImage from "../../assets/insertionSort.png";
+import { CodeView } from "./codeView";
 
 export function InfoView({
   selectedAlgorithm,
@@ -10,16 +10,13 @@ export function InfoView({
   if (!selectedAlgorithm) return;
 
   return (
-    <div className="flex flex-col py-8 px-4 gap-4">
+    <div className="flex flex-1 flex-col py-6 px-4 gap-4">
       <div className="text-center">
         {sortingAlgorithmData[selectedAlgorithm].desc}
       </div>
-      {
-        /// REPLACE IMAGE WITH A GIF ///
-      }
-      <img src={insertionSortImage} alt="" className="w-48 self-center" />
+      <CodeView selectedAlgorithm={selectedAlgorithm} />
       <div className="grid grid-cols-2 gap-1">
-        <p className="col-start-1 col-end-3 text-center font-bold">
+        <p className="col-start-1 col-end-3 text-center font-bold mb-3">
           Time Complexity
         </p>
         <p>Worst Case:</p>
@@ -35,7 +32,7 @@ export function InfoView({
           {sortingAlgorithmData[selectedAlgorithm].timeComplexity.bestCase}
         </p>
       </div>
-      <div className="text-center">
+      <div className="text-center mt-auto">
         <p className="font-bold ">References</p>
         <a
           href="https://en.wikipedia.org/wiki/Insertion_sort"

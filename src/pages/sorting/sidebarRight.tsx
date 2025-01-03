@@ -1,8 +1,6 @@
 import { Sidebar } from "../../components/sidebar";
 import { Slider } from "../../components/input/slider";
 import { InfoView } from "./infoView";
-import { CodeView } from "./codeView";
-import { useToggle } from "../../lib/hooks";
 import { useSortingAlgorithmContext } from "../../context/Visualizer";
 import { generateAnimationArray, sortingAlgorithmData } from "../../lib/utils";
 import play from "../../assets/play.svg";
@@ -19,8 +17,6 @@ export function SidebarRight() {
     arrayToSort,
     runAnimation,
   } = useSortingAlgorithmContext();
-
-  const [value, toggle] = useToggle(true);
 
   const handlePlay = () => {
     if (requiresReset) {
@@ -40,7 +36,7 @@ export function SidebarRight() {
     <Sidebar style={"right"}>
       {selectedAlgorithm && (
         <>
-          <div className="flex items-center justify-center gap-8 h-10 border-b-2 border-grey-light">
+          <div className="flex items-center justify-center gap-8 h-10">
             <Slider
               isDisabled={isSorting}
               value={animationSpeed}
@@ -71,34 +67,10 @@ export function SidebarRight() {
               )}
             </button>
           </div>
-          <h2 className="text-lg text-center py-6">
+          <h2 className="text-lg text-center py-6 border-t-2 border-b-2 border-grey-light font-bold">
             {sortingAlgorithmData[selectedAlgorithm].title}
           </h2>
-          <div className="flex border-t-2 border-b-2 border-grey-light">
-            <button
-              onClick={toggle}
-              disabled={value}
-              className={`flex-1 hover:bg-grey-light py-2 cursor-pointer ${
-                value && "bg-grey-light"
-              }`}
-            >
-              Info
-            </button>
-            <button
-              onClick={toggle}
-              disabled={!value}
-              className={`flex-1 hover:bg-grey-light py-2 cursor-pointer ${
-                !value && "bg-grey-light"
-              }`}
-            >
-              Code
-            </button>
-          </div>
-          {value ? (
-            <InfoView selectedAlgorithm={selectedAlgorithm} />
-          ) : (
-            <CodeView selectedAlgorithm={selectedAlgorithm} />
-          )}
+          <InfoView selectedAlgorithm={selectedAlgorithm} />
         </>
       )}
     </Sidebar>

@@ -29,7 +29,7 @@ export function CodeView({
   };
 
   return (
-    <div className="relative p-[10px]">
+    <div className="relative">
       <div className="relative">
         <button
           onClick={copyToClipboard}
