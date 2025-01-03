@@ -50,13 +50,22 @@ export const sortingAlgorithmData = {
     },
     codeSnippet: `// javascript
 function runBubbleSort(arr) {
-  for (let i = 0; i < arr.length - 1; i++) {
-    for (let j = 0; j < arr.length - 1 - i; j++) {
+  // Prevents multiple length lookups during loop
+  const length = arr.length;
+  let noSwaps;
+
+  for (let i = 0; i < length - 1; i++) {
+    // Flag to optimize by exiting loop early
+    noSwaps = true;
+
+    for (let j = 0; j < length - 1 - i; j++) {
       if (arr[j] > arr[j + 1]) {
         // Swap values
         [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+        noSwaps = false;
       }
     }
+    if (noSwaps) break;
   }
 }
 
