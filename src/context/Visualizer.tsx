@@ -42,6 +42,7 @@ export const SortingAlgorithmProvider = ({
   const requiresReset = isAnimationComplete || isSorting;
 
   useEffect(() => {
+    // NEEDS FIX: Stops the animation when resizing
     //Auto resize array based on resizing of window
     // window.addEventListener("resize", resetArrayAndAnimation);
     // return () => {
@@ -79,13 +80,21 @@ export const SortingAlgorithmProvider = ({
       }
     }, 0);
 
+    // Resets chart and array to default color
     setTimeout(() => {
       const arrayLines = document.getElementsByClassName(
         "array-line"
       ) as HTMLCollectionOf<HTMLElement>;
+      const arrayBoxes = document.getElementsByClassName(
+        "array-box"
+      ) as HTMLCollectionOf<HTMLElement>;
+
       for (let i = 0; i < arrayLines.length; i++) {
-        arrayLines[i].classList.remove("change-line-color");
+        arrayLines[i].classList.remove("bg-green-600");
         arrayLines[i].classList.add("default-line-color");
+
+        arrayBoxes[i].classList.remove("bg-green-600");
+        arrayBoxes[i].classList.add("bg-grey");
       }
     }, 0);
   };
@@ -96,6 +105,9 @@ export const SortingAlgorithmProvider = ({
     const inverseSpeed = (1 / animationSpeed) * 200;
     const arrayLines = document.getElementsByClassName(
       "array-line"
+    ) as HTMLCollectionOf<HTMLElement>;
+    const arrayBoxes = document.getElementsByClassName(
+      "array-box"
     ) as HTMLCollectionOf<HTMLElement>;
 
     const updateClassList = (
@@ -109,12 +121,26 @@ export const SortingAlgorithmProvider = ({
       });
     };
 
+    const updateClassListBox = (
+      indexes: number[],
+      addClassName: string,
+      removeClassName: string
+    ) => {
+      indexes.forEach((index) => {
+        arrayBoxes[index].classList.add(addClassName);
+        arrayBoxes[index].classList.remove(removeClassName);
+      });
+    };
+
     const updateHeightValue = (
       lineIndex: number,
       newHeight: number | undefined
     ) => {
       if (newHeight === undefined) return;
       arrayLines[lineIndex].style.height = `${newHeight}%`;
+
+      // Updates the displayed value on array box instead
+      arrayBoxes[lineIndex].innerText = `${newHeight}`;
     };
 
     animations.forEach((animation, index) => {
@@ -122,9 +148,11 @@ export const SortingAlgorithmProvider = ({
         const [values, isSwap] = animation;
 
         if (!isSwap) {
-          updateClassList(values, "change-line-color", "default-line-color");
+          updateClassList(values, "bg-green-600", "default-line-color");
+          updateClassListBox(values, "bg-green-600", "bg-grey");
           setTimeout(() => {
-            updateClassList(values, "default-line-color", "change-line-color");
+            updateClassList(values, "default-line-color", "bg-green-600");
+            updateClassListBox(values, "bg-grey", "bg-green-600");
           }, inverseSpeed);
         } else {
           const [lineIndex, newHeight] = values;

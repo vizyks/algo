@@ -44,7 +44,7 @@ export function MainView() {
             <div className="grid grid-flow-col bg-grey-light gap-[1px] p-[1px]">
               {arrayToSort.map((value, index) => (
                 <div
-                  className="flex justify-center items-center bg-grey size-7"
+                  className="array-box flex justify-center items-center bg-grey size-7"
                   key={index}
                 >
                   {value}
